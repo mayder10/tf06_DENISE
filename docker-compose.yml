@@ -1,0 +1,16 @@
+services:
+  nginx:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    container_name: nginx
+    ports:
+      - "8000:80"
+  db_postgres:
+     image: redis:alpine
+     container_name: db_postgres
+     
+     volumes:
+       - redis_data:/data
+volumes:
+  redis_data:
